@@ -587,8 +587,8 @@ contains
 #else
    if(ktau.eq.1) then
 #endif
-     if(.not. allocated(acwaterbudget)) allocate(acwaterbudget(ite-its+1, jte-jts+1), source=0.)
      if(.not. restart .and. .not. cycling) then
+     if(.not. allocated(acwaterbudget)) allocate(acwaterbudget(ite-its+1, jte-jts+1), source=0.)
       do j=jts,jte
          do i=its,ite
             do k=1,nsl
