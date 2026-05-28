@@ -19,7 +19,7 @@ module module_ruc_land
 ! to reflect their dimension rstochcol (1:nzs)
 
 #if defined(mpas)
-use mpas_atmphys_constants, g => gravity,rhowater=>rho_w, piconst => pii
+use mpas_atmphys_constants, g => gravity,rhowater=>rho_w, piconst => pii, p1000mb => P0
 use mpas_atmphys_utilities, only: physics_error_fatal,physics_message
 use mpas_log, only: mpas_log_write
 #define em_core 1
