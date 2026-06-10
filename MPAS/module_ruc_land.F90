@@ -352,11 +352,12 @@ contains
                                                          budget, &
                                                        acbudget, &
                                                     waterbudget, &
-                                                  acwaterbudget, &
                                                        smtotold, &
                                                         snowold, &
                                                       canwatold
 
+   real,   allocatable, dimension(:, :), save    ::              &
+                                                  acwaterbudget
 
    real,       dimension( ims:ime, 1:nsl, jms:jme)               &
                                              ::    keepfr3dflag, &
@@ -587,6 +588,7 @@ contains
    if(ktau.eq.1) then
 #endif
      if(.not. restart .and. .not. cycling) then
+     if(.not. allocated(acwaterbudget)) allocate(acwaterbudget(ite-its+1, jte-jts+1), source=0.)
       do j=jts,jte
          do i=its,ite
             do k=1,nsl
@@ -643,7 +645,6 @@ contains
             budget(i,j) = 0.
             acbudget(i,j) = 0.
             waterbudget(i,j) = 0.
-            acwaterbudget(i,j) = 0.
             smtotold(i,j)=0.
             canwatold(i,j)=0.
             chklowq(i,j) = 1.
